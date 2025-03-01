@@ -1,72 +1,38 @@
-import { useState } from 'react';
 import {
   Container,
   Typography,
   Box,
   Grid,
-  Paper,
-  Tabs,
-  Tab,
-  Divider,
   Card,
   CardContent,
   CardMedia,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Collapse,
-  IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Divider,
   useTheme,
-  alpha,
 } from '@mui/material';
 import {
+  ExpandMore as ExpandMoreIcon,
   Code as CodeIcon,
   BugReport as IssuesIcon,
   Autorenew as ActionsIcon,
-  Storage as PackagesIcon,
-  Web as PagesIcon,
+  Language as PagesIcon,
   Security as SecurityIcon,
   Api as ApiIcon,
-  ExpandMore as ExpandMoreIcon,
-  ExpandLess as ExpandLessIcon,
-  CheckCircle as CheckIcon,
 } from '@mui/icons-material';
-
-interface FeatureDetail {
-  title: string;
-  content: string;
-}
+import { JSX } from 'react';
 
 interface FeatureSection {
   id: string;
   title: string;
-  icon: React.ReactNode;
+  icon: JSX.Element;
   description: string;
-  imageUrl: string;
-  details: FeatureDetail[];
-}
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`feature-tabpanel-${index}`}
-      aria-labelledby={`feature-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
+  details: {
+    title: string;
+    content: string;
+  }[];
+  imageUrl?: string;
 }
 
 const FeaturesPage = () => {
@@ -82,7 +48,7 @@ const FeaturesPage = () => {
       details: [
         {
           title: 'What is a Repository?',
-          content: 'A repository (or "repo") is a storage space where your project lives. It contains all of your project files and stores each file revision history. Repositories can have multiple collaborators and can be either public or private.',
+          content: 'A repository (or "repo") is a storage space where your project lives. It contains all of your project\'s files and stores each file\'s revision history. Repositories can have multiple collaborators and can be either public or private.',
         },
         {
           title: 'Creating a Repository',
@@ -90,7 +56,7 @@ const FeaturesPage = () => {
         },
         {
           title: 'Forking a Repository',
-          content: 'A fork is a copy of a repository that allows you to freely experiment with changes without affecting the original project. Forks are commonly used to propose changes to someone else project or to use someone else project as a starting point for your own idea.',
+          content: 'A fork is a copy of a repository that allows you to freely experiment with changes without affecting the original project. Forks are commonly used to propose changes to someone else\'s project or to use someone else\'s project as a starting point for your own idea.',
         },
         {
           title: 'Repository Visibility',
@@ -111,7 +77,7 @@ const FeaturesPage = () => {
         },
         {
           title: 'Pull Requests',
-          content: 'Pull requests let you tell others about changes you have pushed to a branch in a repository. Once a pull request is opened, you can discuss and review the potential changes with collaborators before your changes are merged into the base branch.',
+          content: 'Pull requests let you tell others about changes you\'ve pushed to a branch in a repository. Once a pull request is opened, you can discuss and review the potential changes with collaborators before your changes are merged into the base branch.',
         },
         {
           title: 'Code Reviews',
@@ -132,44 +98,19 @@ const FeaturesPage = () => {
       details: [
         {
           title: 'What are GitHub Actions?',
-          content: 'GitHub Actions is a CI/CD platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.',
+          content: 'GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.',
         },
         {
-          title: 'Workflow Files',
-          content: 'Workflows are defined in YAML files stored in the .github/workflows directory of your repository. They consist of one or more jobs that can run sequentially or in parallel.',
+          title: 'Workflows',
+          content: 'A workflow is a configurable automated process that will run one or more jobs. Workflows are defined by a YAML file checked in to your repository and will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule.',
         },
         {
-          title: 'Events and Triggers',
-          content: 'Workflows can be triggered by GitHub events (like pushes, pull requests, or issues), scheduled events, or external events using the repository dispatch webhook.',
+          title: 'Marketplace',
+          content: 'The GitHub Marketplace is a central location to find, share, and use actions built by the GitHub community. You can find actions to help with continuous integration, deployment, code quality, security, and more.',
         },
         {
-          title: 'Marketplace Actions',
-          content: 'The GitHub Marketplace offers thousands of actions created by the community that you can use in your workflows, from deployment tools to security scanning and more.',
-        },
-      ],
-    },
-    {
-      id: 'packages',
-      title: 'GitHub Packages',
-      icon: <PackagesIcon fontSize="large" />,
-      description: 'Publish and consume packages within your organization or publicly.',
-      imageUrl: 'https://github.githubassets.com/images/modules/site/home-campaign/illu-packages.png',
-      details: [
-        {
-          title: 'What is GitHub Packages?',
-          content: 'GitHub Packages is a package hosting service that allows you to host your packages privately or publicly and use packages as dependencies in your projects.',
-        },
-        {
-          title: 'Supported Package Types',
-          content: 'GitHub Packages supports npm, Maven, NuGet, RubyGems, Docker, and Gradle, allowing you to publish and consume packages in the language and format of your choice.',
-        },
-        {
-          title: 'Integration with Actions',
-          content: 'GitHub Packages integrates seamlessly with GitHub Actions, allowing you to automate your package publishing workflow as part of your CI/CD pipeline.',
-        },
-        {
-          title: 'Package Permissions',
-          content: 'You can configure who can access your packages with granular permissions, making it easy to share packages within your organization while keeping them private from the outside world.',
+          title: 'Self-hosted Runners',
+          content: 'Self-hosted runners offer more control of hardware, operating system, and software tools than GitHub-hosted runners provide. With self-hosted runners, you can create custom hardware configurations that meet your needs.',
         },
       ],
     },
@@ -202,7 +143,7 @@ const FeaturesPage = () => {
       id: 'security',
       title: 'Security Features',
       icon: <SecurityIcon fontSize="large" />,
-      description: 'Keep your code secure with GitHub security features.',
+      description: 'Keep your code secure with GitHub\'s security features.',
       imageUrl: 'https://github.githubassets.com/images/modules/site/home-campaign/illu-security.png',
       details: [
         {
@@ -227,7 +168,7 @@ const FeaturesPage = () => {
       id: 'integrations',
       title: 'Integrations & API',
       icon: <ApiIcon fontSize="large" />,
-      description: 'Extend GitHub functionality with integrations and the GitHub API.',
+      description: 'Extend GitHub\'s functionality with integrations and the GitHub API.',
       imageUrl: 'https://github.githubassets.com/images/modules/site/home-campaign/illu-codespaces.png',
       details: [
         {
@@ -240,7 +181,7 @@ const FeaturesPage = () => {
         },
         {
           title: 'Webhooks',
-          content: 'Webhooks allow you to build or set up integrations that subscribe to certain events on GitHub. When one of those events is triggered, GitHub sends an HTTP POST payload to the webhook configured URL.',
+          content: 'Webhooks allow you to build or set up integrations that subscribe to certain events on GitHub. When one of those events is triggered, GitHub sends an HTTP POST payload to the webhook\'s configured URL.',
         },
         {
           title: 'GitHub Apps',
@@ -257,7 +198,7 @@ const FeaturesPage = () => {
           GitHub Features
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" paragraph>
-          Explore the powerful features that make GitHub the world leading software development platform.
+          Explore the powerful features that make GitHub the world's leading software development platform.
         </Typography>
 
         {featureSections.map((section, index) => (
@@ -265,95 +206,52 @@ const FeaturesPage = () => {
             {index > 0 && <Divider sx={{ mb: 6 }} />}
             
             <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <Box sx={{ 
-                      mr: 2, 
-                      color: 'primary.main',
-                      bgcolor: alpha(theme.palette.primary.main, 0.1),
-                      p: 1,
-                      borderRadius: 1
-                    }}>
-                      {section.icon}
-                    </Box>
-                    <Typography variant="h4" component="h2">
-                      {section.title}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body1" paragraph>
-                    {section.description}
-                  </Typography>
-                  
-                  <List component={Paper} sx={{ mb: 3, borderRadius: 2 }}>
-                    {section.details.map((detail, detailIndex) => (
-                      <FeatureDetailItem 
-                        key={`${section.id}-detail-${detailIndex}`}
-                        detail={detail}
-                      />
-                    ))}
-                  </List>
-                </Box>
+              <Grid item xs={12} md={6} order={{ xs: 2, md: index % 2 === 0 ? 1 : 2 }}>
+                <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Box sx={{ mr: 1, color: 'primary.main' }}>{section.icon}</Box>
+                  {section.title}
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  {section.description}
+                </Typography>
+                
+                {section.details.map((detail) => (
+                  <Accordion key={detail.title} sx={{ mb: 1 }}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={`${section.id}-${detail.title}-content`}
+                      id={`${section.id}-${detail.title}-header`}
+                    >
+                      <Typography variant="subtitle1">{detail.title}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography variant="body2">{detail.content}</Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Box 
-                  component="img"
-                  src={section.imageUrl}
-                  alt={section.title}
-                  sx={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: 2,
-                    boxShadow: 3,
-                  }}
-                />
+              
+              <Grid item xs={12} md={6} order={{ xs: 1, md: index % 2 === 0 ? 2 : 1 }}>
+                {section.imageUrl && (
+                  <Card elevation={3}>
+                    <CardMedia
+                      component="img"
+                      height="300"
+                      image={section.imageUrl}
+                      alt={section.title}
+                      sx={{
+                        objectFit: 'cover',
+                        borderRadius: 1,
+                      }}
+                    />
+                  </Card>
+                )}
               </Grid>
             </Grid>
           </Box>
         ))}
       </Box>
     </Container>
-  );
-};
-
-interface FeatureDetailItemProps {
-  detail: FeatureDetail;
-}
-
-const FeatureDetailItem: React.FC<FeatureDetailItemProps> = ({ detail }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
-  return (
-    <>
-      <ListItem 
-        onClick={handleToggle}
-        sx={{ 
-          borderBottom: 1, 
-          borderColor: 'divider',
-          '&:last-child': {
-            borderBottom: 0,
-          },
-          cursor: 'pointer'
-        }}
-      >
-        <ListItemIcon>
-          <CheckIcon color="primary" />
-        </ListItemIcon>
-        <ListItemText primary={detail.title} />
-        <IconButton edge="end" aria-label="expand" size="small">
-          {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </IconButton>
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <Box sx={{ p: 2, bgcolor: (theme) => alpha(theme.palette.background.paper, 0.5) }}>
-          <Typography variant="body2">{detail.content}</Typography>
-        </Box>
-      </Collapse>
-    </>
   );
 };
 

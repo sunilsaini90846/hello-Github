@@ -34,9 +34,13 @@ import { styled, alpha } from '@mui/material/styles';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: theme.palette.mode === 'dark'
+    ? alpha(theme.palette.common.white, 0.15)
+    : alpha(theme.palette.common.white, 0.25),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: theme.palette.mode === 'dark'
+      ? alpha(theme.palette.common.white, 0.25)
+      : alpha(theme.palette.common.white, 0.35),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -56,16 +60,21 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: theme.palette.mode === 'dark' ? theme.palette.text.primary : '#ffffff',
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
+  color: theme.palette.mode === 'dark' ? theme.palette.text.primary : '#ffffff',
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    '&::placeholder': {
+      color: theme.palette.mode === 'dark' ? theme.palette.text.secondary : alpha('#ffffff', 0.7),
+      opacity: 1,
+    },
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
@@ -74,7 +83,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backdropFilter: 'blur(10px)',
-  backgroundColor: alpha(theme.palette.background.paper, 0.8),
+  backgroundColor: theme.palette.mode === 'dark' 
+    ? alpha(theme.palette.background.paper, 0.8)
+    : theme.palette.primary.main,
   boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
 }));
 
@@ -147,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <>
-      <StyledAppBar position="sticky" color={darkMode ? 'default' : 'primary'} elevation={0}>
+      <StyledAppBar position="sticky" color="primary" elevation={0}>
         <Container maxWidth="xl">
           <Toolbar sx={{ py: 1 }}>
             {isMobile && (
@@ -205,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                     component={Link}
                     to={item.path}
                     sx={{ 
-                      color: theme.palette.mode === 'dark' ? 'white' : 'inherit',
+                      color: darkMode ? theme.palette.text.primary : '#ffffff',
                       fontWeight: 500,
                       '&:hover': {
                         backgroundColor: alpha(theme.palette.common.white, 0.1),

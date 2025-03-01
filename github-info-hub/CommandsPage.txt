@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import {
   Container,
   Typography,
@@ -53,26 +52,9 @@ interface GitCommand {
 
 const CommandsPage = () => {
   const theme = useTheme();
-  const location = useLocation();
   const isDarkMode = theme.palette.mode === 'dark';
   const [tabValue, setTabValue] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-
-  // Set the active tab based on the current route
-  useEffect(() => {
-    const path = location.pathname;
-    if (path.includes('/commands/basic')) {
-      setTabValue(0);
-    } else if (path.includes('/commands/branching')) {
-      setTabValue(1);
-    } else if (path.includes('/commands/remote')) {
-      setTabValue(2);
-    } else if (path.includes('/commands/undoing')) {
-      setTabValue(3);
-    } else if (path.includes('/commands/advanced')) {
-      setTabValue(4);
-    }
-  }, [location]);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -177,11 +159,11 @@ const CommandsPage = () => {
     },
     {
       name: 'git merge --no-commit',
-      description: 'Perform the merge but do not commit',
+      description: 'Perform the merge but don\'t commit',
       syntax: 'git merge --no-commit <branch>',
       example: 'git merge --no-commit feature-branch',
       options: [
-        { flag: '--no-commit', description: 'Perform the merge but do not commit' },
+        { flag: '--no-commit', description: 'Perform the merge but don\'t commit' },
       ],
       category: 'branching',
     },
@@ -216,7 +198,7 @@ const CommandsPage = () => {
       example: 'git pull\ngit pull origin main',
       options: [
         { flag: '--rebase', description: 'Rebase the current branch on top of the upstream branch' },
-        { flag: '--no-commit', description: 'Perform the merge but do not commit' },
+        { flag: '--no-commit', description: 'Perform the merge but don\'t commit' },
       ],
       category: 'remote',
     },
@@ -239,7 +221,7 @@ const CommandsPage = () => {
       syntax: 'git revert <commit>',
       example: 'git revert HEAD\ngit revert abc123',
       options: [
-        { flag: '--no-commit, -n', description: 'Revert but do not create a commit' },
+        { flag: '--no-commit, -n', description: 'Revert but don\'t create a commit' },
         { flag: '--edit, -e', description: 'Edit the commit message prior to committing' },
       ],
       category: 'undoing',

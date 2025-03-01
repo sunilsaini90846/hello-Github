@@ -169,6 +169,11 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/commands" element={<CommandsPage />} />
+                <Route path="/commands/basic" element={<CommandsPage />} />
+                <Route path="/commands/branching" element={<CommandsPage />} />
+                <Route path="/commands/remote" element={<CommandsPage />} />
+                <Route path="/commands/undoing" element={<CommandsPage />} />
+                <Route path="/commands/advanced" element={<CommandsPage />} />
                 <Route path="/features" element={<FeaturesPage />} />
                 <Route path="/blogs" element={<BlogsPage />} />
                 <Route path="/tutorials" element={<TutorialsPage />} />
