@@ -96,7 +96,6 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     { name: 'Home', path: '/' },
     { name: 'Commands', path: '/commands' },
     { name: 'Features', path: '/features' },
-    { name: 'Pricing', path: '/pricing' },
     { name: 'Blogs', path: '/blogs' },
     { name: 'Tutorials', path: '/tutorials' },
   ];

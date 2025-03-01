@@ -1,6 +1,6 @@
 # GitHub Information Hub
 
-A comprehensive website providing information about GitHub, including commands, features, pricing tiers, and popular blogs.
+A comprehensive website providing information about GitHub, including commands, features, and popular blogs.
 
 ![GitHub Information Hub](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
 
@@ -13,7 +13,6 @@ GitHub Information Hub is a React.js application that serves as a one-stop resou
 - **Home Page**: Introduction to Git and GitHub with highlights of key features
 - **GitHub Commands**: Categorized list of Git commands with syntax, examples, and options
 - **GitHub Features**: Detailed explanations of GitHub's features like repositories, issues, pull requests, actions, and more
-- **Pricing & Tiers**: Comparison of GitHub's pricing plans and their features
 - **Famous Blogs & Resources**: Curated list of popular GitHub-related blogs and learning resources
 - **Tutorials & Guides**: Step-by-step tutorials for beginners, advanced users, and enterprise teams
 
@@ -62,7 +61,6 @@ github-info-hub/
 │   │   ├── home/        # Home page components
 │   │   ├── commands/    # Commands page components
 │   │   ├── features/    # Features page components
-│   │   ├── pricing/     # Pricing page components
 │   │   ├── blogs/       # Blogs page components
 │   │   ├── tutorials/   # Tutorials page components
 │   │   └── layout/      # Layout components (Header, Footer, Sidebar)

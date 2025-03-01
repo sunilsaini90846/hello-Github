@@ -7,7 +7,6 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import CommandsPage from './pages/CommandsPage';
 import FeaturesPage from './pages/FeaturesPage';
-import PricingPage from './pages/PricingPage';
 import BlogsPage from './pages/BlogsPage';
 import TutorialsPage from './pages/TutorialsPage';
 import './App.css';
@@ -171,7 +170,6 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/commands" element={<CommandsPage />} />
                 <Route path="/features" element={<FeaturesPage />} />
-                <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/blogs" element={<BlogsPage />} />
                 <Route path="/tutorials" element={<TutorialsPage />} />
               </Routes>

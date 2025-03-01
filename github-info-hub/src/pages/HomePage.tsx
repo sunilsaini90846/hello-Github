@@ -18,7 +18,6 @@ import {
   Code as CodeIcon, 
   GitHub as GitHubIcon, 
   Star as StarIcon, 
-  Paid as PaidIcon, 
   MenuBook as MenuBookIcon, 
   School as SchoolIcon,
   ArrowForward as ArrowForwardIcon,
@@ -43,13 +42,6 @@ const HomePage = () => {
       icon: <GitHubIcon />,
       link: '/features',
       color: theme.palette.secondary.main
-    },
-    {
-      title: 'Pricing & Tiers',
-      description: 'Compare different GitHub plans to find what suits your needs',
-      icon: <PaidIcon />,
-      link: '/pricing',
-      color: '#10b981' // emerald color
     },
     {
       title: 'Famous Blogs',
@@ -78,7 +70,7 @@ const HomePage = () => {
       name: 'Sarah Chen',
       role: 'DevOps Engineer',
       avatar: 'https://i.pravatar.cc/150?img=5',
-      content: 'The pricing comparison helped us choose the right GitHub plan for our startup. Saved us both time and money!'
+      content: 'The comprehensive features documentation helped us understand GitHub capabilities better. Saved us both time and money!'
     },
     {
       name: 'Michael Rodriguez',
@@ -174,7 +166,7 @@ const HomePage = () => {
                     fontSize: { xs: '1rem', md: '1.25rem' }
                   }}
                 >
-                  Your one-stop destination for everything GitHub - from basic commands to advanced features, pricing comparisons, and expert tutorials.
+                  Your one-stop destination for everything GitHub - from basic commands to advanced features, expert tutorials, and curated resources.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                   <Button 
@@ -313,7 +305,7 @@ const HomePage = () => {
 
         <Grid container spacing={3}>
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <Card 
                 sx={{ 
                   height: '100%',

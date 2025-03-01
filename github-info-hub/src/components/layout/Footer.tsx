@@ -123,19 +123,6 @@ const Footer = () => {
               >
                 GitHub Features
               </Link>
-              <Link 
-                href="/pricing" 
-                color="text.secondary" 
-                sx={{ 
-                  textDecoration: 'none',
-                  '&:hover': { color: theme.palette.primary.main },
-                  transition: 'color 0.2s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                }}
-              >
-                Pricing & Tiers
-              </Link>
             </Stack>
           </Grid>
           

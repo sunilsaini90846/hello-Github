@@ -19,7 +19,6 @@ import {
   Home as HomeIcon,
   Code as CodeIcon,
   Star as FeaturesIcon,
-  AttachMoney as PricingIcon,
   Book as BlogsIcon,
   School as TutorialsIcon,
   ExpandLess,
@@ -208,34 +207,6 @@ const Sidebar = () => {
               <FeaturesIcon />
             </ListItemIcon>
             <ListItemText primary="GitHub Features" />
-          </ListItemButton>
-
-          <ListItemButton
-            component={Link}
-            to="/pricing"
-            selected={location.pathname === '/pricing'}
-            sx={{
-              borderRadius: 2,
-              mb: 1,
-              '&.Mui-selected': {
-                backgroundColor: alpha(theme.palette.primary.main, 0.1),
-                color: theme.palette.primary.main,
-                '&:hover': {
-                  backgroundColor: alpha(theme.palette.primary.main, 0.15),
-                },
-                '& .MuiListItemIcon-root': {
-                  color: theme.palette.primary.main,
-                },
-              },
-              '&:hover': {
-                backgroundColor: alpha(theme.palette.primary.main, 0.05),
-              },
-            }}
-          >
-            <ListItemIcon sx={{ minWidth: 40 }}>
-              <PricingIcon />
-            </ListItemIcon>
-            <ListItemText primary="Pricing & Tiers" />
           </ListItemButton>
 
           <ListItemButton
